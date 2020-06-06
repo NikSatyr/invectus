@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface UserInfoService {
 
-    @GET("me/fields=username,ig_id")
+    @GET("me/?fields=username,ig_id")
     fun getUserInfo(): Single<UserInfo>
 
 }
