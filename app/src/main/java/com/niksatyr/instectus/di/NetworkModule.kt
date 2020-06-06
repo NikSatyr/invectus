@@ -3,6 +3,7 @@ package com.niksatyr.instectus.di
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.niksatyr.instectus.Constants
+import com.niksatyr.instectus.network.UserInfoService
 import com.niksatyr.instectus.network.UserMediaService
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
@@ -18,6 +19,7 @@ val networkModule = module {
     single { provideGson() }
     single { provideRetrofit(get(), get()) }
     single { provideWebService<UserMediaService>(get()) }
+    single { provideWebService<UserInfoService>(get()) }
 }
 
 private fun provideOkHttpClient() = OkHttpClient.Builder()
