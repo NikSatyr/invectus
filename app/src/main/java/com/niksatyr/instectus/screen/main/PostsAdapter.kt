@@ -32,7 +32,7 @@ class PostsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post = posts[position]
 
-        val thumbnailUrl = if (post.isVideo()) post.videoPreviewUrl else post.mediaUrl
+        val thumbnailUrl = post.getPreviewUrl()
 
         holder.apply {
             imagePostPreview.load(thumbnailUrl)

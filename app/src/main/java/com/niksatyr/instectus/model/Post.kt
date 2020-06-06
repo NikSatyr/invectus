@@ -17,6 +17,8 @@ data class Post(
 
     fun isCarousel() = type == CAROUSEL
 
+    fun getPreviewUrl(): String = if (isVideo()) videoPreviewUrl!! else mediaUrl
+
     companion object {
         const val TYPE_IMAGE = "MEDIA"
         const val TYPE_VIDEO = "VIDEO"
