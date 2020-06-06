@@ -36,13 +36,18 @@ class PostsAdapter(
 
         holder.apply {
             imagePostPreview.load(thumbnailUrl)
-            imageVideoIndicator.visibility = if (post.isVideo()) View.VISIBLE else View.GONE
+
+            if (post.isVideo()) {
+                imagePostTypeIndicator.setImageResource(R.drawable.ic_play_arrow)
+            } else if (post.isCarousel()) {
+                imagePostTypeIndicator.setImageResource(R.drawable.ic_carousel)
+            }
         }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imagePostPreview: ImageView = itemView.findViewById(R.id.ivPostPreview)
-        val imageVideoIndicator: ImageView = itemView.findViewById(R.id.ivVideoIndicator)
+        val imagePostTypeIndicator: ImageView = itemView.findViewById(R.id.ivTypeIndicator)
     }
 
 }
