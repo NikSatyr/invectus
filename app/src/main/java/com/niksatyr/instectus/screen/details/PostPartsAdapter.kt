@@ -34,7 +34,10 @@ class PostPartsAdapter(
         val postType = mediaUrls[position].second
         val mediaUrl = mediaUrls[position].first
 
-        if (postType == Post.TYPE_IMAGE) loadImage(holder, mediaUrl) else loadVideo(holder, mediaUrl)
+        if (postType == Post.TYPE_IMAGE) loadImage(holder, mediaUrl) else loadVideo(
+            holder,
+            mediaUrl
+        )
     }
 
     private fun loadImage(holder: ViewHolder, url: String) {
@@ -49,12 +52,15 @@ class PostPartsAdapter(
     }
 
     private fun loadVideo(holder: ViewHolder, url: String) {
-        holder.apply {
-            videoViewPostPart.visibility = View.VISIBLE
-            imageViewPostPart.visibility = View.GONE
+        holder.imageViewPostPart.visibility = View.GONE
 
-            videoViewPostPart.setVideoPath(url)
-            videoViewPostPart.start()
+        holder.videoViewPostPart.apply {
+            visibility = View.VISIBLE
+            setOnPreparedListener {
+                it.isLooping = true
+            }
+            setVideoPath(url)
+            start()
         }
     }
 
