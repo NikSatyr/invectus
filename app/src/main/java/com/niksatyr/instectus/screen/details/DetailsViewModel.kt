@@ -1,17 +1,14 @@
 package com.niksatyr.instectus.screen.details
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.niksatyr.instectus.model.Post
 import com.niksatyr.instectus.repo.InstagramRepository
+import com.niksatyr.instectus.screen.base.BaseViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
-class DetailsViewModel(private val instagramRepository: InstagramRepository) : ViewModel() {
-
-    private val compositeDisposable = CompositeDisposable()
+class DetailsViewModel(private val instagramRepository: InstagramRepository) : BaseViewModel() {
 
     val post = MutableLiveData<Post>()
 

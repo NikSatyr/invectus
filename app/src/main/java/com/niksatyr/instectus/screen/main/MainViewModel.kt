@@ -1,18 +1,15 @@
 package com.niksatyr.instectus.screen.main
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.niksatyr.instectus.model.Post
 import com.niksatyr.instectus.model.UserInfo
 import com.niksatyr.instectus.repo.InstagramRepository
+import com.niksatyr.instectus.screen.base.BaseViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 
-class MainViewModel(private val instagramRepository: InstagramRepository) : ViewModel() {
-
-    private val compositeDisposable = CompositeDisposable()
+class MainViewModel(private val instagramRepository: InstagramRepository) : BaseViewModel() {
 
     val userInfo = MutableLiveData<UserInfo>()
 
@@ -40,11 +37,6 @@ class MainViewModel(private val instagramRepository: InstagramRepository) : View
             )
 
         compositeDisposable.add(disposable)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        compositeDisposable.dispose()
     }
 
 }
