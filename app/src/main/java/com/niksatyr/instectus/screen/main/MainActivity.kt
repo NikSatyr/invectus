@@ -17,9 +17,7 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
     private val mainViewModel: MainViewModel by viewModel()
 
-    private val postsAdapter = PostsAdapter {
-        openPostDetails(it)
-    }
+    private val postsAdapter = PostsAdapter { openPostDetails(it) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
