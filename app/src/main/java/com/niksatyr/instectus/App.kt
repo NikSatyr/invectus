@@ -3,6 +3,7 @@ package com.niksatyr.instectus
 import android.app.Application
 import com.niksatyr.instectus.di.networkModule
 import com.niksatyr.instectus.di.repositoryModule
+import com.niksatyr.instectus.screen.details.detailsModule
 import com.niksatyr.instectus.screen.main.mainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -22,7 +23,8 @@ class App : Application() {
             modules(
                 networkModule,
                 repositoryModule,
-                mainModule
+                mainModule,
+                detailsModule
             )
         }
     }

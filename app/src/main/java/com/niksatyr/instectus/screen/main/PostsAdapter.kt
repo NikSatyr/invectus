@@ -10,7 +10,8 @@ import com.niksatyr.instectus.R
 import com.niksatyr.instectus.model.Post
 
 class PostsAdapter(
-    private val posts: MutableList<Post> = ArrayList()
+    private val posts: MutableList<Post> = ArrayList(),
+    var onPostSelectedListener: ((Post) -> Unit)? = null
 ) : RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
 
     fun setData(posts: List<Post>) {
@@ -36,6 +37,9 @@ class PostsAdapter(
 
         holder.apply {
             imagePostPreview.load(thumbnailUrl)
+            imagePostPreview.setOnClickListener {
+                onPostSelectedListener?.invoke(post)
+            }
 
             if (post.isVideo()) {
                 imagePostTypeIndicator.setImageResource(R.drawable.ic_play_arrow)

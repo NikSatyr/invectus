@@ -1,10 +1,13 @@
 package com.niksatyr.instectus.screen.main
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.niksatyr.instectus.R
+import com.niksatyr.instectus.model.Post
+import com.niksatyr.instectus.screen.details.DetailsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -12,7 +15,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private val mainViewModel: MainViewModel by viewModel()
 
-    private val postsAdapter = PostsAdapter()
+    private val postsAdapter = PostsAdapter {
+        openPostDetails(it)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +37,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         mainViewModel.fetchUserInfo()
         mainViewModel.fetchUserPosts()
+    }
+
+    private fun openPostDetails(post: Post) {
+        val intent = Intent(this, DetailsActivity::class.java)
+        intent.putExtra(DetailsActivity.EXTRA_POST, post)
+        startActivity(intent)
     }
 
     companion object {

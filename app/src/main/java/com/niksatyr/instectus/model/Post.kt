@@ -11,7 +11,7 @@ data class Post(
     @SerializedName("username") val username: String,
     @SerializedName("media_type") val type: String,
     @SerializedName("media_url") val mediaUrl: String,
-    @SerializedName("caption") val caption: String,
+    @SerializedName("caption") val caption: String?,
     @SerializedName("timestamp") val timestamp: Date,
     @SerializedName("thumbnail_url") val videoPreviewUrl: String?
 ) : Parcelable {
