@@ -9,10 +9,10 @@ import coil.api.load
 import com.niksatyr.instectus.R
 
 class PostPartsAdapter(
-    private val mediaUrls: MutableList<String> = ArrayList()
+    private val mediaUrls: MutableList<Pair<String, String>> = ArrayList()
 ) : RecyclerView.Adapter<PostPartsAdapter.ViewHolder>() {
 
-    fun setData(mediaUrls: List<String>) {
+    fun setData(mediaUrls: List<Pair<String, String>>) {
         this.mediaUrls.apply {
             clear()
             addAll(mediaUrls)
@@ -29,7 +29,9 @@ class PostPartsAdapter(
     override fun getItemCount() = mediaUrls.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.imagePostPart.load(mediaUrls[position])
+        holder.imagePostPart.load(mediaUrls[position].first) {
+            placeholder(R.drawable.ic_cloud)
+        }
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
