@@ -2,16 +2,16 @@ package com.niksatyr.instectus.screen.details
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.niksatyr.instectus.R
 import com.niksatyr.instectus.model.Post
+import com.niksatyr.instectus.screen.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DetailsActivity : AppCompatActivity(R.layout.activity_details) {
+class DetailsActivity : BaseActivity(R.layout.activity_details) {
 
     private val detailsViewModel: DetailsViewModel by viewModel()
 
@@ -19,9 +19,10 @@ class DetailsActivity : AppCompatActivity(R.layout.activity_details) {
 
     private val dateFormat = SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault())
 
+    override fun canNavigateUp() = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setupActionBar()
 
         val post: Post = intent?.extras?.getParcelable(EXTRA_POST)
             ?: throw IllegalArgumentException("This activity requires a Post object to be passed")
@@ -37,23 +38,6 @@ class DetailsActivity : AppCompatActivity(R.layout.activity_details) {
         })
 
         detailsViewModel.setPost(post)
-    }
-
-    override fun onSupportNavigateUp(): Boolean {
-        finish()
-        return true
-    }
-
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-    }
-
-    private fun setupActionBar() {
-        supportActionBar?.apply {
-            setDisplayShowHomeEnabled(true)
-            setDisplayHomeAsUpEnabled(true)
-        }
     }
 
     private fun displayPostMetadata(it: Post) {

@@ -28,15 +28,22 @@ class MainViewModel(private val instagramRepository: InstagramRepository) : Base
     }
 
     fun fetchUserPosts() {
+        state.value = State.Loading
+
         val disposable = instagramRepository.getUserMedia()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { posts.value = it.posts },
-                { Timber.e(it, "Failed to fetch posts") }
+                { onPostsFetched(it.posts) },
+                { state.value = State.Error(it.message ?: "Unknown error") }
             )
 
         compositeDisposable.add(disposable)
+    }
+
+    private fun onPostsFetched(posts: List<Post>) {
+        state.value = State.Success
+        this.posts.value = posts
     }
 
 }
