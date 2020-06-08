@@ -38,9 +38,9 @@ class PostChildrenAdapter(
     }
 
     private fun loadImage(holder: ViewHolder, url: String) {
-        holder.videoViewPostChildVideo.visibility = View.GONE
+        holder.videoViewPostChild.visibility = View.GONE
 
-        holder.imageViewPostChildImage.apply {
+        holder.imageViewPostChild.apply {
             visibility = View.VISIBLE
             load(url) {
                 placeholder(R.drawable.ic_cloud)
@@ -49,9 +49,9 @@ class PostChildrenAdapter(
     }
 
     private fun loadVideo(holder: ViewHolder, url: String) {
-        holder.imageViewPostChildImage.visibility = View.GONE
+        holder.imageViewPostChild.visibility = View.GONE
 
-        holder.videoViewPostChildVideo.apply {
+        holder.videoViewPostChild.apply {
             visibility = View.VISIBLE
             setOnPreparedListener {
                 it.isLooping = true
@@ -62,8 +62,8 @@ class PostChildrenAdapter(
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val imageViewPostChildImage: ImageView = itemView.findViewById(R.id.ivPostChildImage)
-        val videoViewPostChildVideo: VideoView = itemView.findViewById(R.id.ivPostChildVideo)
+        val imageViewPostChild: ImageView = itemView.findViewById(R.id.ivPostChild)
+        val videoViewPostChild: VideoView = itemView.findViewById(R.id.videoViewPostChild)
     }
 
 }

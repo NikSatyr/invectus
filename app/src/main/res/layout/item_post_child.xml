@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/ivPostChildImage"
+        android:id="@+id/ivPostChild"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
@@ -17,7 +17,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <VideoView
-        android:id="@+id/ivPostChildVideo"
+        android:id="@+id/videoViewPostChild"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:adjustViewBounds="true"
