@@ -1,4 +1,4 @@
-package com.niksatyr.instectus.screen.details
+package com.niksatyr.invectus.screen.details
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.niksatyr.instectus.R
-import com.niksatyr.instectus.model.Post
+import com.niksatyr.invectus.R
+import com.niksatyr.invectus.model.Post
 
 class PostChildrenAdapter(
     private val mediaUrlsWithTypes: MutableList<Pair<String, String>> = ArrayList()

@@ -1,6 +1,6 @@
-package com.niksatyr.instectus.network
+package com.niksatyr.invectus.network
 
-import com.niksatyr.instectus.model.UserInfo
+import com.niksatyr.invectus.model.UserInfo
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 

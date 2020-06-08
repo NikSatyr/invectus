@@ -1,10 +1,10 @@
-package com.niksatyr.instectus.screen.main
+package com.niksatyr.invectus.screen.main
 
 import androidx.lifecycle.MutableLiveData
-import com.niksatyr.instectus.model.Post
-import com.niksatyr.instectus.model.UserInfo
-import com.niksatyr.instectus.repo.InstagramRepository
-import com.niksatyr.instectus.screen.base.BaseViewModel
+import com.niksatyr.invectus.model.Post
+import com.niksatyr.invectus.model.UserInfo
+import com.niksatyr.invectus.repo.InstagramRepository
+import com.niksatyr.invectus.screen.base.BaseViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber

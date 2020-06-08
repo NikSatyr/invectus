@@ -1,4 +1,4 @@
-package com.niksatyr.instectus.screen.main
+package com.niksatyr.invectus.screen.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,10 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import com.niksatyr.instectus.R
-import com.niksatyr.instectus.model.Post
-import com.niksatyr.instectus.screen.base.BaseActivity
-import com.niksatyr.instectus.screen.details.DetailsActivity
+import com.niksatyr.invectus.R
+import com.niksatyr.invectus.model.Post
+import com.niksatyr.invectus.screen.base.BaseActivity
+import com.niksatyr.invectus.screen.details.DetailsActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 

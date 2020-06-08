@@ -1,10 +1,10 @@
-package com.niksatyr.instectus.di
+package com.niksatyr.invectus.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.niksatyr.instectus.Constants
-import com.niksatyr.instectus.network.UserInfoService
-import com.niksatyr.instectus.network.UserMediaService
+import com.niksatyr.invectus.Constants
+import com.niksatyr.invectus.network.UserInfoService
+import com.niksatyr.invectus.network.UserMediaService
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

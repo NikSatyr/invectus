@@ -1,4 +1,4 @@
-package com.niksatyr.instectus.screen.main
+package com.niksatyr.invectus.screen.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
-import com.niksatyr.instectus.R
-import com.niksatyr.instectus.model.Post
+import com.niksatyr.invectus.R
+import com.niksatyr.invectus.model.Post
 
 class PostsAdapter(
     private val posts: MutableList<Post> = ArrayList(),

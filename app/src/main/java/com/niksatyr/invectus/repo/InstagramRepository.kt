@@ -1,9 +1,9 @@
-package com.niksatyr.instectus.repo
+package com.niksatyr.invectus.repo
 
-import com.niksatyr.instectus.dto.UserMediaResponse
-import com.niksatyr.instectus.model.Post
-import com.niksatyr.instectus.network.UserInfoService
-import com.niksatyr.instectus.network.UserMediaService
+import com.niksatyr.invectus.dto.UserMediaResponse
+import com.niksatyr.invectus.model.Post
+import com.niksatyr.invectus.network.UserInfoService
+import com.niksatyr.invectus.network.UserMediaService
 import io.reactivex.rxjava3.core.Single
 
 class InstagramRepository(

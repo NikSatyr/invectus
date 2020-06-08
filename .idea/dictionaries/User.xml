@@ -2,8 +2,10 @@
   <dictionary name="User">
     <words>
       <w>graphql</w>
+      <w>gson</w>
       <w>instagram</w>
       <w>invectus</w>
+      <w>niksatyr</w>
     </words>
   </dictionary>
 </component>

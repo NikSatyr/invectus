@@ -1,4 +1,4 @@
-package com.niksatyr.instectus.screen.base
+package com.niksatyr.invectus.screen.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

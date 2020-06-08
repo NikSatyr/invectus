@@ -1,11 +1,11 @@
-package com.niksatyr.instectus.screen.details
+package com.niksatyr.invectus.screen.details
 
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
-import com.niksatyr.instectus.R
-import com.niksatyr.instectus.model.Post
-import com.niksatyr.instectus.screen.base.BaseActivity
+import com.niksatyr.invectus.R
+import com.niksatyr.invectus.model.Post
+import com.niksatyr.invectus.screen.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat

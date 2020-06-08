@@ -1,7 +1,7 @@
-package com.niksatyr.instectus.dto
+package com.niksatyr.invectus.dto
 
 import com.google.gson.annotations.SerializedName
-import com.niksatyr.instectus.model.Post
+import com.niksatyr.invectus.model.Post
 
 data class UserMediaResponse(
     @SerializedName("data") val posts: List<Post>

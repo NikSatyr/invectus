@@ -1,6 +1,6 @@
-package com.niksatyr.instectus.di
+package com.niksatyr.invectus.di
 
-import com.niksatyr.instectus.repo.InstagramRepository
+import com.niksatyr.invectus.repo.InstagramRepository
 import org.koin.dsl.module
 
 val repositoryModule = module {

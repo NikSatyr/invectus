@@ -1,4 +1,4 @@
-package com.niksatyr.instectus
+package com.niksatyr.invectus
 
 object Constants {
 

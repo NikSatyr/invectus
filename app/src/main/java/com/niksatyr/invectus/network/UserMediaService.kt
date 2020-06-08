@@ -1,6 +1,6 @@
-package com.niksatyr.instectus.network
+package com.niksatyr.invectus.network
 
-import com.niksatyr.instectus.dto.UserMediaResponse
+import com.niksatyr.invectus.dto.UserMediaResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path

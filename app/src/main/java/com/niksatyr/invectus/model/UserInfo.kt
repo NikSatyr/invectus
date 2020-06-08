@@ -1,4 +1,4 @@
-package com.niksatyr.instectus.model
+package com.niksatyr.invectus.model
 
 import com.google.gson.annotations.SerializedName
 
