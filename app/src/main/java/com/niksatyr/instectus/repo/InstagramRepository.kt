@@ -15,7 +15,7 @@ class InstagramRepository(
 
     fun getUserInfo() = userInfoService.getUserInfo()
 
-    fun getCarouselParts(post: Post): Single<UserMediaResponse> {
+    fun getCarouselChildren(post: Post): Single<UserMediaResponse> {
         if (!post.isCarousel()) {
             throw IllegalArgumentException("Provided post is not a type of carousel")
         }

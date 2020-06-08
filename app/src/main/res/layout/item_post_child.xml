@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/ivPostPartImage"
+        android:id="@+id/ivPostChildImage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -17,7 +17,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <VideoView
-        android:id="@+id/ivPostPartVideo"
+        android:id="@+id/ivPostChildVideo"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:scaleType="fitXY"

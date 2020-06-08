@@ -6,4 +6,6 @@ object Constants {
 
     const val ACCESS_TOKEN = "IGQVJYRWJEMHdVWGg5V3pfblJvUTNyRU5UNnN2NEhWQjg2NnlBSFJ3UFJRdTlQVjNLamM1c0R4RW1EN0xPcHExX1Q4d3FxV3ZAXX2tMOHhwRzRXR2JhQkY0dVNBSkQ4OWJnYl9wNG9n"
 
+    const val DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
 }

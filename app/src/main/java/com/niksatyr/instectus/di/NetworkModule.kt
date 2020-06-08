@@ -32,7 +32,7 @@ private fun provideOkHttpClient() = OkHttpClient.Builder()
     .build()
 
 private fun provideGson() = GsonBuilder()
-    .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
+    .setDateFormat(Constants.DATE_FORMAT)
     .create()
 
 private fun provideRetrofit(client: OkHttpClient, gson: Gson) = Retrofit.Builder()

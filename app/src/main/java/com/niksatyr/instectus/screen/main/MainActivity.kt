@@ -29,17 +29,11 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             adapter = postsAdapter
         }
 
-        mainViewModel.userInfo.observe(this, Observer {
-            supportActionBar?.title = it.username
-        })
-
-        mainViewModel.posts.observe(this, Observer {
-            postsAdapter.setData(it)
-        })
-
-        mainViewModel.state.observe(this, Observer {
-            onStateUpdated(it)
-        })
+        mainViewModel.apply {
+            userInfo.observe(this@MainActivity, Observer { supportActionBar?.title = it.username })
+            posts.observe(this@MainActivity, Observer { postsAdapter.setData(it) })
+            state.observe(this@MainActivity, Observer { onStateUpdated(it) })
+        }
 
         if (savedInstanceState == null) {
             onDataUpdateRequired()

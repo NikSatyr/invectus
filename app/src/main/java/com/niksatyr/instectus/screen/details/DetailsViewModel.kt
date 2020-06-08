@@ -12,36 +12,36 @@ class DetailsViewModel(private val instagramRepository: InstagramRepository) : B
 
     val post = MutableLiveData<Post>()
 
-    val mediaUrls = MutableLiveData<List<Pair<String, String>>>()
+    val mediaUrlsWithTypes = MutableLiveData<List<Pair<String, String>>>()
 
     fun setPost(post: Post) {
         this.post.value = post
-        fetchCarouselChildrenIfRequired()
+        fetchMediaUrlsWithTypes()
     }
 
-    private fun fetchCarouselChildrenIfRequired() {
+    private fun fetchMediaUrlsWithTypes() {
         post.value?.let {
             if (it.isCarousel()) {
                 fetchCarouselChildren(it)
             } else {
-                mediaUrls.value = listOf(Pair(it.mediaUrl, it.type))
+                mediaUrlsWithTypes.value = listOf(Pair(it.mediaUrl, it.type))
             }
         }
     }
 
     private fun fetchCarouselChildren(post: Post) {
-        val disposable = instagramRepository.getCarouselParts(post)
+        val disposable = instagramRepository.getCarouselChildren(post)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .map { mapToUrlsWithTypes(it.posts) }
+            .map { mapToMediaUrlsWithTypes(it.posts) }
             .subscribe(
-                { mediaUrls.value = it },
-                { Timber.e(it, "Failed to fetch post children") }
+                { mediaUrlsWithTypes.value = it },
+                { Timber.e(it, "Failed to fetch carousel children") }
             )
 
         compositeDisposable.add(disposable)
     }
 
-    private fun mapToUrlsWithTypes(posts: List<Post>) = posts.map { Pair(it.mediaUrl, it.type) }
+    private fun mapToMediaUrlsWithTypes(posts: List<Post>) = posts.map { Pair(it.mediaUrl, it.type) }
 
 }

@@ -33,10 +33,10 @@ class PostsAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val post = posts[position]
 
-        val thumbnailUrl = post.getPreviewUrl()
+        val previewUrl = post.getPreviewUrl()
 
         holder.apply {
-            imagePostPreview.load(thumbnailUrl)
+            imagePostPreview.load(previewUrl)
             imagePostPreview.setOnClickListener {
                 onPostSelectedListener?.invoke(post)
             }

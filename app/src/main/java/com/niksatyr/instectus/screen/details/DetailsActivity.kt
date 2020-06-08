@@ -15,7 +15,7 @@ class DetailsActivity : BaseActivity(R.layout.activity_details) {
 
     private val detailsViewModel: DetailsViewModel by viewModel()
 
-    private val postPartsAdapter = PostPartsAdapter()
+    private val postPartsAdapter = PostChildrenAdapter()
 
     private val dateFormat = SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault())
 
@@ -33,7 +33,7 @@ class DetailsActivity : BaseActivity(R.layout.activity_details) {
             displayPostMetadata(it)
         })
 
-        detailsViewModel.mediaUrls.observe(this, Observer {
+        detailsViewModel.mediaUrlsWithTypes.observe(this, Observer {
             postPartsAdapter.setData(it)
         })
 
