@@ -41,7 +41,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             onStateUpdated(it)
         })
 
-        onDataUpdateRequired()
+        if (savedInstanceState == null) {
+            onDataUpdateRequired()
+        }
     }
 
     private fun openPostDetails(post: Post) {
