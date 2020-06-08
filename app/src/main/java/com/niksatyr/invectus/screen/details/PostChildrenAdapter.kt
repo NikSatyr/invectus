@@ -34,7 +34,21 @@ class PostChildrenAdapter(
         val postType = mediaUrlsWithTypes[position].second
         val mediaUrl = mediaUrlsWithTypes[position].first
 
+        holder.videoViewPostChild.setOnErrorListener { _, _, _ ->
+            onVideoFailedToLoad(holder)
+            true
+        }
+
         if (postType == Post.TYPE_IMAGE) loadImage(holder, mediaUrl) else loadVideo(holder, mediaUrl)
+    }
+
+    private fun onVideoFailedToLoad(holder: ViewHolder) {
+        holder.apply {
+            videoViewPostChild.visibility = View.GONE
+            imageViewPostChild.visibility = View.VISIBLE
+
+            imageViewPostChild.setImageResource(R.drawable.ic_error)
+        }
     }
 
     private fun loadImage(holder: ViewHolder, url: String) {
