@@ -44,6 +44,7 @@ class PostChildrenAdapter(
             visibility = View.VISIBLE
             load(url) {
                 placeholder(R.drawable.ic_cloud)
+                error(R.drawable.ic_error)
             }
         }
     }

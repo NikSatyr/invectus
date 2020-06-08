@@ -2,6 +2,7 @@ package com.niksatyr.invectus.screen.details
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.niksatyr.invectus.R
 import com.niksatyr.invectus.model.Post
@@ -29,15 +30,19 @@ class DetailsActivity : BaseActivity(R.layout.activity_details) {
 
         postPartsPager.adapter = postPartsAdapter
 
-        detailsViewModel.post.observe(this, Observer {
-            displayPostMetadata(it)
-        })
+        detailsViewModel.apply {
+            this.post.observe(this@DetailsActivity, Observer { displayPostMetadata(it) })
+            mediaUrlsWithTypes.observe(this@DetailsActivity, Observer { postPartsAdapter.setData(it) })
+            state.observe(this@DetailsActivity, Observer { onStateUpdated(it) })
 
-        detailsViewModel.mediaUrlsWithTypes.observe(this, Observer {
-            postPartsAdapter.setData(it)
-        })
+            setPost(post)
+        }
+    }
 
-        detailsViewModel.setPost(post)
+    override fun onError(reason: String) {
+        super.onError(reason)
+        Toast.makeText(this, R.string.failed_to_fetch_posts, Toast.LENGTH_SHORT).show()
+        finish()
     }
 
     private fun displayPostMetadata(it: Post) {

@@ -36,10 +36,15 @@ class DetailsViewModel(private val instagramRepository: InstagramRepository) : B
             .map { mapToMediaUrlsWithTypes(it.posts) }
             .subscribe(
                 { mediaUrlsWithTypes.value = it },
-                { Timber.e(it, "Failed to fetch carousel children") }
+                { onFailedToLoadCarouselChildren(it) }
             )
 
         compositeDisposable.add(disposable)
+    }
+
+    private fun onFailedToLoadCarouselChildren(throwable: Throwable) {
+        Timber.e(throwable, "Failed to fetch carousel children")
+        state.value = State.Error(throwable.message ?: "Unknown error")
     }
 
     private fun mapToMediaUrlsWithTypes(posts: List<Post>) = posts.map { Pair(it.mediaUrl, it.type) }
