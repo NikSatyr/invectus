@@ -25,7 +25,7 @@
             tools:text="invectus" />
 
         <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/postPartsPager"
+            android:id="@+id/postChildrenPager"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -45,7 +45,7 @@
             android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/postPartsPager"
+            app:layout_constraintTop_toBottomOf="@+id/postChildrenPager"
             tools:text="This is a very meaningful caption" />
 
         <TextView

@@ -16,7 +16,7 @@ class DetailsActivity : BaseActivity(R.layout.activity_details) {
 
     private val detailsViewModel: DetailsViewModel by viewModel()
 
-    private val postPartsAdapter = PostChildrenAdapter()
+    private val postChildrenAdapter = PostChildrenAdapter()
 
     private val dateFormat = SimpleDateFormat("dd.MM.yyyy, HH:mm", Locale.getDefault())
 
@@ -28,11 +28,11 @@ class DetailsActivity : BaseActivity(R.layout.activity_details) {
         val post: Post = intent?.extras?.getParcelable(EXTRA_POST)
             ?: throw IllegalArgumentException("This activity requires a Post object to be passed")
 
-        postPartsPager.adapter = postPartsAdapter
+        postChildrenPager.adapter = postChildrenAdapter
 
         detailsViewModel.apply {
             this.post.observe(this@DetailsActivity, Observer { displayPostMetadata(it) })
-            mediaUrlsWithTypes.observe(this@DetailsActivity, Observer { postPartsAdapter.setData(it) })
+            mediaUrlsWithTypes.observe(this@DetailsActivity, Observer { postChildrenAdapter.setData(it) })
             state.observe(this@DetailsActivity, Observer { onStateUpdated(it) })
 
             setPost(post)
