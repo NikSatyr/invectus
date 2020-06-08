@@ -14,6 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 private const val HEADER_ACCESS_TOKEN = "access_token"
 
+private const val ISO_861_DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+
 val networkModule = module {
     single { provideOkHttpClient() }
     single { provideGson() }
@@ -32,7 +34,7 @@ private fun provideOkHttpClient() = OkHttpClient.Builder()
     .build()
 
 private fun provideGson() = GsonBuilder()
-    .setDateFormat(Constants.DATE_FORMAT)
+    .setDateFormat(ISO_861_DATE_FORMAT)
     .create()
 
 private fun provideRetrofit(client: OkHttpClient, gson: Gson) = Retrofit.Builder()
