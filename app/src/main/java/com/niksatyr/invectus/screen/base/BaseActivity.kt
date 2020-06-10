@@ -3,8 +3,16 @@ package com.niksatyr.invectus.screen.base
 import android.os.Bundle
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import org.koin.android.viewmodel.ext.android.viewModel
+import kotlin.reflect.KClass
 
-abstract class BaseActivity(@LayoutRes layoutId: Int) : AppCompatActivity(layoutId) {
+abstract class BaseActivity<VM : BaseViewModel>(
+    @LayoutRes layoutId: Int,
+    viewModelClass: KClass<VM>
+) : AppCompatActivity(layoutId) {
+
+    val viewModel: VM by viewModel(viewModelClass)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,6 +20,8 @@ abstract class BaseActivity(@LayoutRes layoutId: Int) : AppCompatActivity(layout
         if (canNavigateUp()) {
             setupActionBar()
         }
+
+        viewModel.state.observe(this, Observer { onStateUpdated(it) })
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -28,14 +38,6 @@ abstract class BaseActivity(@LayoutRes layoutId: Int) : AppCompatActivity(layout
         }
     }
 
-    fun onStateUpdated(state: BaseViewModel.State) {
-        when (state) {
-            is BaseViewModel.State.Success -> onSuccess()
-            is BaseViewModel.State.Loading -> onLoading()
-            is BaseViewModel.State.Error -> onError(state.reason)
-        }
-    }
-
     open fun onSuccess() {
         // no-op
     }
@@ -49,6 +51,14 @@ abstract class BaseActivity(@LayoutRes layoutId: Int) : AppCompatActivity(layout
     }
 
     open fun canNavigateUp() = false
+
+    private fun onStateUpdated(state: BaseViewModel.State) {
+        when (state) {
+            is BaseViewModel.State.Success -> onSuccess()
+            is BaseViewModel.State.Loading -> onLoading()
+            is BaseViewModel.State.Error -> onError(state.reason)
+        }
+    }
 
     private fun setupActionBar() {
         supportActionBar?.apply {

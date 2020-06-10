@@ -11,12 +11,8 @@ import com.niksatyr.invectus.model.Post
 import com.niksatyr.invectus.screen.base.BaseActivity
 import com.niksatyr.invectus.screen.details.DetailsActivity
 import kotlinx.android.synthetic.main.activity_main.*
-import org.koin.android.viewmodel.ext.android.viewModel
 
-class MainActivity : BaseActivity(R.layout.activity_main) {
-
-    private val mainViewModel: MainViewModel by viewModel()
-
+class MainActivity : BaseActivity<MainViewModel>(R.layout.activity_main, MainViewModel::class) {
     private val postsAdapter = PostsAdapter { openPostDetails(it) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +25,9 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             adapter = postsAdapter
         }
 
-        mainViewModel.apply {
+        viewModel.apply {
             userInfo.observe(this@MainActivity, Observer { supportActionBar?.title = it.username })
             posts.observe(this@MainActivity, Observer { postsAdapter.setData(it) })
-            state.observe(this@MainActivity, Observer { onStateUpdated(it) })
         }
 
         if (savedInstanceState == null) {
@@ -47,8 +42,8 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     }
 
     private fun onDataUpdateRequired() {
-        mainViewModel.fetchUserInfo()
-        mainViewModel.fetchUserPosts()
+       viewModel.fetchUserInfo()
+       viewModel.fetchUserPosts()
     }
 
     override fun onSuccess() {

@@ -8,13 +8,10 @@ import com.niksatyr.invectus.R
 import com.niksatyr.invectus.model.Post
 import com.niksatyr.invectus.screen.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_details.*
-import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DetailsActivity : BaseActivity(R.layout.activity_details) {
-
-    private val detailsViewModel: DetailsViewModel by viewModel()
+class DetailsActivity : BaseActivity<DetailsViewModel>(R.layout.activity_details, DetailsViewModel::class) {
 
     private val postChildrenAdapter = PostChildrenAdapter()
 
@@ -30,10 +27,9 @@ class DetailsActivity : BaseActivity(R.layout.activity_details) {
 
         postChildrenPager.adapter = postChildrenAdapter
 
-        detailsViewModel.apply {
+        viewModel.apply {
             this.post.observe(this@DetailsActivity, Observer { displayPostMetadata(it) })
             mediaUrlsWithTypes.observe(this@DetailsActivity, Observer { postChildrenAdapter.setData(it) })
-            state.observe(this@DetailsActivity, Observer { onStateUpdated(it) })
 
             setPost(post)
         }
